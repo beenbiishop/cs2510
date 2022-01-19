@@ -19,7 +19,7 @@ If you made many changes to a problem, or finished the problem, and would like s
  1. Make any changes you would like to the files and put them in the appropriate folders (e.g. week 2 lab would go in the main -> Labs -> Week 2 folder)
  2. On the GitHub Desktop app, select the "Current Branch" dropdown and click "New Branch". Choose an appropriate name (e.g. if you did problem 2, name the branch prob-2-updates – this name will go away once the branches are merged, and is not too important).
  3. Select "Bring my changes to ***branch name here*** when prompted.
- 4. Title the changes you made and add a brief description if you would like, then click the "Commit changes to ***branch name here***" button.
+ 4. Title the changes you made and add a brief description if you would like, then click the "Commit to ***branch name here***" button.
  5. Select the "Current Branch" dropdown one more time, and click the "Pull Requests" tab. Click "Create a pull request from current branch". If prompted, publish the branch.
  6. A new window should open in your browser where you can enter the details of your pull request. Click on "Reviewers" and choose the person you would like to review your code. You can also leave a comment alongside your request to provide input to the person reviewing your code.
  7. Click "Create Pull Request"
@@ -33,3 +33,11 @@ After you receive an email notifiying you that a code review has been requested,
  5. When everything looks good to go, click the "Merge Pull Request" button and select "Confirm Merge" to merge the existing files in the main branch with the new files from the pull request.
 
 ### A Few Small Changes (Commit to main)
+If you need to make small changes to a problem, or are confident your response is correct, you can commit your changes directly to the main branch. To submit these files to be changed in the repository, follow these instructions.
+ 1. Make any changes you would like to the files and put them in the appropriate folders (e.g. week 2 lab would go in the main -> Labs -> Week 2 folder)
+ 2. Open the GitHub Desktop app and review the changes you made.
+ 3. Title the changes you made and add a brief description if you would like, then click the "Commit  to main" button.
+ 4. Click "Push Origin" to relay those changes to the online repository.
+
+### Other Questions
+If you are still having issues with GitHub, refer to the extremely comprehensive documentation [at this link](https://docs.github.com/en).

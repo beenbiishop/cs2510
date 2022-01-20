@@ -42,7 +42,7 @@ as s class diagram like this:
   +----------------------+  |     |
                             |     |
               +-------------+     +----------------+
-              | Author      |     | Author         |
+              | Author      |     | Publisher      |
               +-------------+     +----------------+
               | String name |     | String name    |
               | int yob     |     | String country |

@@ -1,5 +1,8 @@
 import tester.Tester;
 
+// Pooja Gidwani and Ben Bishop
+
+// Represents an embroidery piece
 class EmbroideryPiece {
 
   /*
@@ -55,6 +58,7 @@ interface IMotif {
   String getName();
 }
 
+// represents a cross stitch motif
 class CrossStitchMotif implements IMotif {
 
   /*
@@ -96,6 +100,7 @@ class CrossStitchMotif implements IMotif {
   }
 }
 
+// represents a chain stitch motif
 class ChainStitchMotif implements IMotif {
 
   /*
@@ -299,16 +304,21 @@ class ExamplesEmbroidery {
   GroupMotif nature = new GroupMotif("nature", this.elements);
   EmbroideryPiece pillowCover = new EmbroideryPiece("Pillow Cover", this.nature);
 
-
-  // test the method testAverage in the class EmbroideryPiece
+  // test the method averageDifficulty in the class EmbroideryPiece, and test
+  // the methods getCount and getDifficulties in the interface IMotif
   boolean testAverage(Tester t) {
-    return t.checkInexact(this.pillowCover.averageDifficulty(), 4.09, 0.01);
+    return t.checkInexact(this.pillowCover.averageDifficulty(), 4.09, 0.01)
+        && t.checkExpect(this.nature.getCount(), 5)
+        && t.checkInexact(this.nature.getDifficulties(), 20.45, 0.01);
   }
 
-  // test the method embroideryInfo in the class EmbroideryPiece
+  // test the method embroideryInfo in the class EmbroideryPiece, and test
+  // the method getName in the interface IMotif
   boolean testInfo(Tester t) {
     return t.checkExpect(this.pillowCover.embroideryInfo(), "Pillow Cover:"
         + " bird (cross stitch), tree (chain stitch), rose (cross stitch), "
-        + "poppy (chain stitch), daisy (cross stitch).");
+        + "poppy (chain stitch), daisy (cross stitch).")
+        && t.checkExpect(this.nature.getName(), "bird (cross stitch), tree (chain stitch),"
+            + " rose (cross stitch), poppy (chain stitch), daisy (cross stitch)");
   }
 }

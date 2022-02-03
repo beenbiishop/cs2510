@@ -58,7 +58,7 @@ interface IMotif {
   String getName();
 }
 
-// represents a cross stitch motif
+// represents a cross stitch, which is a type of motif
 class CrossStitchMotif implements IMotif {
 
   /*
@@ -100,7 +100,7 @@ class CrossStitchMotif implements IMotif {
   }
 }
 
-// represents a chain stitch motif
+// represents a chain stitch, which is a type of motif
 class ChainStitchMotif implements IMotif {
 
   /*
@@ -142,6 +142,7 @@ class ChainStitchMotif implements IMotif {
   }
 }
 
+// represents a group of motifs
 class GroupMotif implements IMotif {
 
   /*
@@ -304,7 +305,7 @@ class ExamplesEmbroidery {
   GroupMotif nature = new GroupMotif("nature", this.elements);
   EmbroideryPiece pillowCover = new EmbroideryPiece("Pillow Cover", this.nature);
 
-  // test the method averageDifficulty in the class EmbroideryPiece, and test
+  // tests the method averageDifficulty in the class EmbroideryPiece, and tests
   // the methods getCount and getDifficulties in the interface IMotif
   boolean testAverage(Tester t) {
     return t.checkInexact(this.pillowCover.averageDifficulty(), 4.09, 0.01)
@@ -312,7 +313,7 @@ class ExamplesEmbroidery {
         && t.checkInexact(this.nature.getDifficulties(), 20.45, 0.01);
   }
 
-  // test the method embroideryInfo in the class EmbroideryPiece, and test
+  // tests the method embroideryInfo in the class EmbroideryPiece, and tests
   // the method getName in the interface IMotif
   boolean testInfo(Tester t) {
     return t.checkExpect(this.pillowCover.embroideryInfo(), "Pillow Cover:"

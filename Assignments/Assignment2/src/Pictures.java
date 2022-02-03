@@ -1,5 +1,7 @@
 import tester.Tester;
 
+//Pooja Gidwani and Ben Bishop
+
 // Represents a picture with shapes and operations
 interface IPicture {
   int getWidth();

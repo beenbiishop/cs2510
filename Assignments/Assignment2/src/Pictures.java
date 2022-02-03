@@ -180,8 +180,12 @@ class Overlay implements IOperation {
   }
 
   public int checkComboDepth() {
-    return topPicture.comboDepth() + bottomPicture.comboDepth() + 1;
-
+    if (topPicture.comboDepth() <= bottomPicture.comboDepth()) {
+      return bottomPicture.comboDepth() + 1;
+    }
+    else {
+      return topPicture.comboDepth() + 1;
+    }
   }
 
   public IOperation mirrorFunction() {

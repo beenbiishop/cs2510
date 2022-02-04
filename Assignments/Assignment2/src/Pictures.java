@@ -375,6 +375,9 @@ class ExamplesPicture {
   // examples of pictures and operations
   IPicture circle = new Shape("circle", 20);
   IPicture square = new Shape("square", 30);
+  IPicture emptyShape = new Shape("empty", 0);
+  IOperation emptyOperation = new Scale(this.emptyShape);
+  IPicture emptyCombo = new Combo("empty", this.emptyOperation);
   IOperation scaledCircle = new Scale(this.circle);
   IPicture bigCircle = new Combo("big circle", this.scaledCircle);
   IOperation overlaySquareBigCircle = new Overlay(this.square, this.bigCircle);
@@ -394,6 +397,8 @@ class ExamplesPicture {
   boolean testWidth(Tester t) {
     return t.checkExpect(this.circle.getWidth(), 20)
         && t.checkExpect(this.doubledSquareOnCircle.getWidth(), 80)
+        && t.checkExpect(this.emptyShape.getWidth(), 0)
+        && t.checkExpect(this.emptyOperation.checkWidth(), 0)
         && t.checkExpect(this.besideSquareOnCircle.checkWidth(), 80);
   }
 
@@ -402,6 +407,8 @@ class ExamplesPicture {
   boolean testCount(Tester t) {
     return t.checkExpect(this.circle.countShapes(), 1)
         && t.checkExpect(this.doubledSquareOnCircle.countShapes(), 4)
+        && t.checkExpect(this.emptyShape.countShapes(), 1)
+        && t.checkExpect(this.emptyOperation.checkCount(), 1)
         && t.checkExpect(this.besideSquareOnCircle.checkCount(), 4);
   }
 
@@ -410,6 +417,8 @@ class ExamplesPicture {
   boolean testComboDepth(Tester t) {
     return t.checkExpect(this.circle.comboDepth(), 0)
         && t.checkExpect(this.doubledSquareOnCircle.comboDepth(), 3)
+        && t.checkExpect(this.emptyShape.comboDepth(), 0)
+        && t.checkExpect(this.emptyOperation.checkComboDepth(), 1)
         && t.checkExpect(this.besideSquareOnCircle.checkComboDepth(), 3);
   }
 
@@ -419,6 +428,8 @@ class ExamplesPicture {
     return t.checkExpect(this.circle.mirror(), this.circle)
         && t.checkExpect(this.circleAndSquare.mirror(),
             new Combo("circle and square", new Beside(this.square, this.circle)))
+        && t.checkExpect(this.emptyShape.mirror(), this.emptyShape)
+        && t.checkExpect(this.emptyOperation.mirrorFunction(), this.emptyOperation)
         && t.checkExpect(this.besideSquareOnCircle.mirrorFunction(),
             new Beside(this.squareOnCircle, this.squareOnCircle));
   }
@@ -430,6 +441,8 @@ class ExamplesPicture {
         "beside(overlay(square, big circle), overlay(square, big circle))")
         && t.checkExpect(this.doubledSquareOnCircle.pictureRecipe(3),
             "beside(overlay(square, scale(circle)), overlay(square, scale(circle)))")
+        && t.checkExpect(this.emptyCombo.pictureRecipe(5), "scale(empty)")
+        && t.checkExpect(this.emptyOperation.pictureFunction(5), "scale(empty)")
         && t.checkExpect(this.besideSquareOnCircle.pictureFunction(3),
             "beside(overlay(square, scale(circle)), overlay(square, scale(circle)))");
   }

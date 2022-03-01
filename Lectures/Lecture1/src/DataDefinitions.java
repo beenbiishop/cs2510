@@ -32,22 +32,20 @@ Here is the data definition in DrRacket:
 We have seen that all this information can be represented concisely 
 as s class diagram like this:
 
-  +----------------------+
-  | Book                 | 
-  +----------------------+
-  | String title         |
-  | Author author        |--+
-  | Publisher publisher  |--------+
-  | int price            |  |     |
-  +----------------------+  |     |
-                            |     |
-              +-------------+     +----------------+
-              | Author      |     | Publisher      |
-              +-------------+     +----------------+
-              | String name |     | String name    |
-              | int yob     |     | String country |
-              +-------------+     | int yob        |
-                                  +----------------+
+  +---------------+
+  | Book          | 
+  +---------------+
+  | String title  |
+  | Author author |--+
+  | int price     |  |
+  +---------------+  |
+                     v
+              +-------------+
+              | Author      |
+              +-------------+
+              | String name |
+              | int yob     |
+              +-------------+
 
 We discussed the difference between exact and inexact numbers
 and the fact that in Java we have to specify the kind of numbers
@@ -58,7 +56,7 @@ We record the book price in whole dollars only (for convenience).
 The code below shows how this class diagram and our examples can be
 translated into a representation as Java classes
 (a Java class hierarchy):
-*/
+ */
 
 // to represent a book in a bookstore
 class Book{
@@ -68,11 +66,11 @@ class Book{
   int price;
 
   // the constructor
-  Book(String title, Author author, Publisher publisher, int price){
+  Book(String title, Author author, int price, Publisher publisher){
     this.title = title;
     this.author = author;
-    this.publisher = publisher;
     this.price = price;
+    this.publisher = publisher;
   }
 }
 
@@ -88,26 +86,26 @@ class Author{
   }
 }
 
-// to represent a publisher of a book in a booktore
+// to represent a publisher of a book in a bookstore
 class Publisher {
-	String name;
-	String country;
-	int yob;
-	
-	// the constructor
-	Publisher(String name, String country, int yob){
-		this.name = name;
-		this.country = country;
-		this.yob = yob;
-	}
+  String name;
+  String country;
+  int yearOpened;
+
+  // the constructor
+  Publisher(String name, String country, int yearOpened) {
+    this.name = name;
+    this.country = country;
+    this.yearOpened = yearOpened;
+  }
 }
 
 // examples and tests for the class hierarchy that represents 
 // books and authors
 class ExamplesBooks{
   ExamplesBooks(){}
-  
-  Book beaches = new Book("Beaches", this.pat, 20);
+
   Author pat = new Author("Pat Conroy", 1948);
-  Publisher penguin = new Publisher ("Penguin Publishing", "United States", 2003);
+  Publisher penguin = new Publisher("Penguin Publishing", "US", 2020);
+  Book beaches = new Book("Beaches", this.pat, 20, this.penguin);
 }
